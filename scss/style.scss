@@ -1,12 +1,260 @@
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400, 400i, 600|Roboto:100,400,700';
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
-$default: #e2e2e2;
-$black: #000;
+$gradient-color-1: #564883;
+$gradient-color-2: #d10846;
+
+$main-color: $gradient-color-1;
+
+$bg-color: #fff;
+$bg-color-sub: #eee;
+
+$font-color: #75757e;
+$font-color-inverse: #fff;
+$font-color-dark: #000;
+
+$border-color: #ddd;
+
+html, body {
+  min-height: 100%;
+  min-width: 320px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, body, ul, ol {
+  margin: 0;
+}
+
+h1 {font-size: 2em;}
+h2 {font-size: 1.8em;}
+h3 {font-size: 1.6em;}
+h4 {font-size: 1.4em;}
+h5 {font-size: 1.2em;}
+h6 {font-size: 1em;}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+}
+
+button, a {
+  outline: none;
+  cursor: pointer;
+  transition: all .3s ease-out;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btn {
+  font: 14px/1 'Comfortaa', cursive;
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  .material-icons {
+    vertical-align: middle;
+  }
+}
+
+.btn_link {
+  color: $main-color;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btn_icon {
+  opacity: .5;
+  + .btn_icon {
+    margin-left: .5em;
+  }
+  &:hover, &:active, &:focus {
+    opacity: 1;
+  }
+}
+
+.btn_active {
+  color: $main-color;
+  opacity: 1;
+}
+
+.material-icons {
+  vertical-align: bottom;
+}
+
+.text_overflow {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 body {
-    background: $default;
-    color: $black;
-    font-family: 'Open Sans';
-    font-size: 16px;
-    position: relative;
+  background: $bg-color;
+  color: $font-color;
+  font: 14px/1.4 'Comfortaa', cursive;
+}
+
+.page-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  color: $font-color-inverse;
+  background-image: linear-gradient(to right, $gradient-color-1, $gradient-color-2)
+}
+
+.page-header__title {
+  text-transform: capitalize;
+  font-size: 1.4em;
+}
+
+.page-header__link {
+  opacity: .8;
+}
+
+.main {
+  padding-top: 4em;
+  background: $bg-color;
+}
+
+.page-container {
+  padding: 0 1em;
+}
+
+.calendar {
+}
+
+.calendar__week {
+  display: flex;
+}
+
+.calendar__header {
+  text-transform: capitalize;
+  border-bottom: 1px solid $border-color;
+  .calendar__day {
+    border: none;
+    padding: 1.5em;
+    font-size: .75em;
+    opacity: .7;
+  }
+}
+
+.calendar__day {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 1.4em 0 0;
+  height: 3.7em;
+  flex-direction: column;
+  border-bottom: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  &:first-child {
+    border-left: none;
+  }
+  &:hover, &.calendar__day_active {
+    background: darken($bg-color, 5%);
+  }
+}
+
+.calendar__day_outer {
+  color: rgba($font-color, .3);
+}
+
+.calendar__schedule {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: calc(18px + 6px);
+  li {
+    margin: 1px;
+    height: 6px;
+    width: 6px;
+    background-color: $bg-color-sub;
+    border-radius: 100%;
+    &.type-1 {background-color: #ec407a;}
+    &.type-2 {background-color: #fe9800;}
+    &.type-3 {background-color: #9d27b1;}
+    &.type-4 {background-color: #7db341;}
+    &.type-5 {background-color: #5e34b0;}
+    &.type-6 {background-color: aquamarine;}
+  }
+}
+
+.page-header_sub {
+  color: $font-color-dark;
+  font-weight: 600;
+  font-size: 1.4em;
+  margin: 1em 0;
+}
+
+.card {
+  background: $bg-color-sub;
+  border-radius: 15px;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.card__header {
+  margin-bottom: 1em;
+}
+
+.card__title {
+  color: $main-color;
+  margin-bottom: .5em;
+  font-size: 1.2em;
+  line-height: 1.1;
+  font-weight: 400;
+  a {
+    color: inherit;
+  }
+}
+
+.card__stats {
+  display: flex;
+  flex-wrap: wrap;
+  color: transparentize($font-color, .5);
+  font-size: .85em;
+  span {
+    flex: 1;
+    white-space: nowrap;
+  }
+  .material-icons {
+    font-size: 1.5em;
+  }
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.btn_fab {
+  position: fixed;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $main-color;
+  border-radius: 100%;
+  font-size: 24px;
+  color: $font-color-inverse;
+  width: 1.7em;
+  height: 1.7em;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  &:hover, &:active, &:focus {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
 }
