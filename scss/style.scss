@@ -7,12 +7,30 @@ $main-color: $gradient-color-1;
 
 $bg-color: #fff;
 $bg-color-sub: #eee;
+$transparent: rgba(255, 255, 255, 0);
 
+$font-size: 14px;
 $font-color: #75757e;
 $font-color-inverse: #fff;
 $font-color-dark: #000;
 
 $border-color: #ddd;
+
+$header-padding: 1em;
+$icon-font-size: 1.7143em; /*24/14*/
+
+//calendar__day
+$size: 8px;
+$margin: 2px;
+$padding-top: 1.5;
+
+//training-color
+$type-1: #ec407a;
+$type-2: #fe9800;
+$type-3: #9d27b1;
+$type-4: #7db341;
+$type-5: #5e34b0;
+$type-6: aquamarine;
 
 html, body {
   min-height: 100%;
@@ -27,12 +45,29 @@ h1, h2, h3, h4, h5, h6, body, ul, ol {
   margin: 0;
 }
 
-h1 {font-size: 2em;}
-h2 {font-size: 1.8em;}
-h3 {font-size: 1.6em;}
-h4 {font-size: 1.4em;}
-h5 {font-size: 1.2em;}
-h6 {font-size: 1em;}
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+h4 {
+  font-size: 1.4em;
+}
+
+h5 {
+  font-size: 1.2em;
+}
+
+h6 {
+  font-size: 1em;
+}
 
 ul, li {
   list-style: none;
@@ -86,6 +121,7 @@ a {
 }
 
 .material-icons {
+  font-size: $icon-font-size;
   vertical-align: bottom;
 }
 
@@ -96,10 +132,24 @@ a {
   text-overflow: ellipsis;
 }
 
+.text_nowrap {
+  white-space: nowrap;
+}
+
+.text_break {
+  word-break: break-all;
+}
+
 body {
   background: $bg-color;
   color: $font-color;
   font: 14px/1.4 'Comfortaa', cursive;
+}
+
+.page-container {
+  margin: 0 auto;
+  max-width: 960px;
+  min-width: 320px;
 }
 
 .page-header {
@@ -108,10 +158,12 @@ body {
   right: 0;
   left: 0;
   z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1em;
+  .page-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  padding: $header-padding;
   color: $font-color-inverse;
   background-image: linear-gradient(to right, $gradient-color-1, $gradient-color-2)
 }
@@ -119,6 +171,7 @@ body {
 .page-header__title {
   text-transform: capitalize;
   font-size: 1.4em;
+  line-height: 1;
 }
 
 .page-header__link {
@@ -126,11 +179,12 @@ body {
 }
 
 .main {
-  padding-top: 4em;
+  padding-bottom: 4em;
+  padding-top: $header-padding*2 + $icon-font-size;
   background: $bg-color;
 }
 
-.page-container {
+.page-section {
   padding: 0 1em;
 }
 
@@ -141,31 +195,23 @@ body {
   display: flex;
 }
 
-.calendar__header {
-  text-transform: capitalize;
-  border-bottom: 1px solid $border-color;
-  .calendar__day {
-    border: none;
-    padding: 1.5em;
-    font-size: .75em;
-    opacity: .7;
-  }
-}
-
 .calendar__day {
-  line-height: 1;
+  height: $size*2 + $margin*4 + (1 + $padding-top)*$font-size;
+  overflow: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
   flex: 1;
-  padding: 1.4em 0 0;
-  height: 3.7em;
-  flex-direction: column;
+  line-height: 1;
+  padding-top: 1.5em;
   border-bottom: 1px solid $border-color;
   border-left: 1px solid $border-color;
-  &:first-child {
-    border-left: none;
+  transition: background .3s ease-in-out;
+  &:last-child {
+    border-right: 1px solid $border-color;
   }
   &:hover, &.calendar__day_active {
+    cursor: default;
     background: darken($bg-color, 5%);
   }
 }
@@ -174,22 +220,52 @@ body {
   color: rgba($font-color, .3);
 }
 
+.calendar__header {
+  text-transform: capitalize;
+  border-bottom: 1px solid $border-color;
+  .calendar__day {
+    height: auto;
+    border: none;
+    padding: 1.5em;
+    font-size: .75em;
+    opacity: .7;
+  }
+}
+
 .calendar__schedule {
   display: flex;
   flex-wrap: wrap;
-  max-width: calc(18px + 6px);
+  max-width: $size*3 + $margin*6;
   li {
-    margin: 1px;
-    height: 6px;
-    width: 6px;
-    background-color: $bg-color-sub;
-    border-radius: 100%;
-    &.type-1 {background-color: #ec407a;}
-    &.type-2 {background-color: #fe9800;}
-    &.type-3 {background-color: #9d27b1;}
-    &.type-4 {background-color: #7db341;}
-    &.type-5 {background-color: #5e34b0;}
-    &.type-6 {background-color: aquamarine;}
+    margin: $margin;
+    width: $size;
+    height: $size;
+    border-radius: $size;
+    &.type-1 {
+      background-color: $type-1;
+    }
+    &.type-2 {
+      background-color: $type-2;
+    }
+    &.type-3 {
+      background-color: $type-3;
+    }
+    &.type-4 {
+      background-color: $type-4;
+    }
+    &.type-5 {
+      background-color: $type-5;
+    }
+    &.type-6 {
+      background-color: $type-6;
+    }
+    &.more {
+      background-color: $bg-color-sub;
+      text-align: center;
+      width: $size*2 + $margin*2;
+      font-size: .6em;
+      line-height: 1;
+    }
   }
 }
 
@@ -198,13 +274,33 @@ body {
   font-weight: 600;
   font-size: 1.4em;
   margin: 1em 0;
+  padding: 0 1em;
 }
 
 .card {
   background: $bg-color-sub;
   border-radius: 15px;
-  padding: 1em;
+  padding: 1.5em;
   margin-bottom: 1em;
+  border-left: 3px solid $transparent;
+  &.type-1 {
+    border-color: rgba(#ec407a, .3);
+  }
+  &.type-2 {
+    border-color: rgba(#fe9800, .3);
+  }
+  &.type-3 {
+    border-color: rgba(#9d27b1, .3);
+  }
+  &.type-4 {
+    border-color: rgba(#7db341, .3);
+  }
+  &.type-5 {
+    border-color: rgba(#5e34b0, .3);
+  }
+  &.type-6 {
+    border-color: rgba(aquamarine, .3);
+  }
 }
 
 .card__header {
@@ -212,6 +308,8 @@ body {
 }
 
 .card__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: $main-color;
   margin-bottom: .5em;
   font-size: 1.2em;
@@ -224,16 +322,17 @@ body {
 
 .card__stats {
   display: flex;
-  flex-wrap: wrap;
   color: transparentize($font-color, .5);
   font-size: .85em;
-  span {
-    flex: 1;
-    white-space: nowrap;
-  }
   .material-icons {
     font-size: 1.5em;
+    margin-right: .25em;
   }
+}
+
+.card__stat {
+  flex: 1;
+  word-break: break-all;
 }
 
 .card__footer {
@@ -251,10 +350,10 @@ body {
   border-radius: 100%;
   font-size: 24px;
   color: $font-color-inverse;
-  width: 1.7em;
-  height: 1.7em;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  width: 2em;
+  height: 2em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   &:hover, &:active, &:focus {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
 }

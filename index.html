@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Пример страницы</title>
+    <title>SportPriority</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--favicons-->
@@ -25,16 +25,18 @@
 </head>
 <body>
 <header class="page-header">
-    <a class="page-header__link btn btn_icon" href="javascript:void(0);">
-        <i class="material-icons">arrow_back</i>
-    </a>
-    <h2 class="page-header__title">февраль 2017</h2>
-    <a class="page-header__link btn btn_icon" href="javascript:void(0);">
-        <i class="material-icons">more_horiz</i>
-    </a>
+    <div class="page-container">
+        <a class="page-header__link btn btn_icon" href="javascript:void(0);">
+            <i class="material-icons">arrow_back</i>
+        </a>
+        <h2 class="page-header__title">февраль 2017</h2>
+        <a class="page-header__link btn btn_icon" href="javascript:void(0);">
+            <i class="material-icons">more_horiz</i>
+        </a>
+    </div>
 </header>
 
-<main class="main">
+<main class="main page-container">
     <div class="calendar">
         <div class="calendar__week calendar__header">
             <div class="calendar__day">пн</div>
@@ -84,15 +86,32 @@
                     <li class="type-3"></li>
                     <li class="type-4"></li>
                     <li class="type-5"></li>
+                    <li class="type-6"></li>
                 </ul>
             </div>
-            <div class="calendar__day">15</div>
+            <div class="calendar__day">15
+                <ul class="calendar__schedule">
+                    <li class="type-1"></li>
+                    <li class="type-2"></li>
+                    <li class="type-3"></li>
+                    <li class="type-4"></li>
+                    <li class="type-5"></li>
+                </ul>
+            </div>
             <div class="calendar__day">16</div>
             <div class="calendar__day">17</div>
             <div class="calendar__day">18</div>
         </div>
         <div class="calendar__week">
-            <div class="calendar__day">19</div>
+            <div class="calendar__day">19
+                <ul class="calendar__schedule">
+                    <li class="type-1"></li>
+                    <li class="type-2"></li>
+                    <li class="type-3"></li>
+                    <li class="type-4"></li>
+                    <li class="more">+4</li>
+                </ul>
+            </div>
             <div class="calendar__day">20</div>
             <div class="calendar__day">21
                 <ul class="calendar__schedule">
@@ -115,24 +134,24 @@
         </div>
     </div>
 
-    <section class="page-container">
+    <section class="page-section">
         <h3 class="page-header_sub">Детали</h3>
-        <article class="card">
+        <article class="card type-3">
             <header class="card__header">
                 <h4 class="card__title">
                     <a href="javascript:void(0);">
-                        Чемпионат по выпиванию пива на дождевой воде
+                        Чемпионат по выыыыыыыыыыыыыыыыыыыпиванию пива на дождевой воде
                     </a>
                 </h4>
                 <div class="card__stats">
-                <span>
-                    <i class="material-icons">schedule</i>
-                    Завтра в 17:00
-                </span>
-                    <span>
-                    <i class="material-icons">place</i>
-                    Комсомольская, 33
-                </span>
+                    <div class="card__stat">
+                        <i class="material-icons">schedule</i>
+                        Завтра в <span class="text_nowrap">17:00</span>
+                    </div>
+                    <div class="card__stat">
+                        <i class="material-icons">place</i>
+                        Комсомооооооооооооооооооооооооооооооооольская, <span class="text_nowrap">33</span>
+                    </div>
                 </div>
             </header>
             <div class="card__body">
@@ -145,6 +164,39 @@
                         <i class="material-icons">share</i>
                     </button>
                     <button type="button" class="btn btn_icon btn_active">
+                        <i class="material-icons">favorite_border</i>
+                    </button>
+                </div>
+            </footer>
+        </article>
+        <article class="card type-5">
+            <header class="card__header">
+                <h4 class="card__title">
+                    <a href="javascript:void(0);">
+                        Чемпионат по выпиванию пива на дождевой воде
+                    </a>
+                </h4>
+                <div class="card__stats">
+                    <div class="card__stat">
+                        <i class="material-icons">schedule</i>
+                        Завтра в <span class="text_nowrap">17:00</span>
+                    </div>
+                    <div class="card__stat">
+                        <i class="material-icons">place</i>
+                        Комсомольская, <span class="text_nowrap">33</span>
+                    </div>
+                </div>
+            </header>
+            <div class="card__body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut varius massa. Proin fermentum leo sit amet tellus dictum, vitae.
+            </div>
+            <footer class="card__footer">
+                <button type="button" class="btn btn_link">Хочу</button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn_icon">
+                        <i class="material-icons">share</i>
+                    </button>
+                    <button type="button" class="btn btn_icon">
                         <i class="material-icons">favorite_border</i>
                     </button>
                 </div>
